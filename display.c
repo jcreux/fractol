@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 18:08:17 by jcreux            #+#    #+#             */
-/*   Updated: 2019/06/17 23:32:54 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/08/20 23:38:57 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void		julia(t_mlx *mlx, int x, int y)
 	}
 	if (mlx->i == mlx->iter)
 		fill_pixel(mlx, x, y, 0xffffff);
+	else
+		fill_pixel(mlx, x, y, 0);
 }
 
 static void		mandelbrot(t_mlx *mlx, int x, int y)
@@ -65,6 +67,8 @@ static void		mandelbrot(t_mlx *mlx, int x, int y)
 	}
 	if (mlx->i == mlx->iter)
 		fill_pixel(mlx, x, y, 0xffffff);
+	else
+		fill_pixel(mlx, x, y, 0);
 }
 
 void			create_fractal(t_mlx *mlx)
@@ -74,10 +78,6 @@ void			create_fractal(t_mlx *mlx)
 
 	y = 0;
 	mlx->iter = 50;
-	mlx->x_min = -2;
-	mlx->x_max = 1;
-	mlx->y_min = -1;
-	mlx->y_max = 1;
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;
