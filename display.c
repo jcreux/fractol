@@ -6,28 +6,12 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 18:08:17 by jcreux            #+#    #+#             */
-/*   Updated: 2019/08/20 23:38:57 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/11 20:30:29 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "fractol.h"
-
-static void		fill_pixel(t_mlx *mlx, int x, int y, unsigned int color)
-{
-	t_rgb	rgb;
-
-	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
-	{
-		rgb.red = color / (CHAR_RANGE * CHAR_RANGE);
-		rgb.green = (color / CHAR_RANGE) % CHAR_RANGE;
-		rgb.blue = color % CHAR_RANGE;
-		mlx->img_data[x * 4 + y * 4 * WIN_WIDTH] = rgb.blue;
-		mlx->img_data[x * 4 + y * 4 * WIN_WIDTH + 1] = rgb.green;
-		mlx->img_data[x * 4 + y * 4 * WIN_WIDTH + 2] = rgb.red;
-		mlx->img_data[x * 4 + y * 4 * WIN_WIDTH + 3] = 0;
-	}
-}
 
 static void		julia(t_mlx *mlx, int x, int y)
 {
@@ -44,10 +28,7 @@ static void		julia(t_mlx *mlx, int x, int y)
 		mlx->new_i = 2 * mlx->old_r * mlx->old_i + 0.5;
 		mlx->i++;
 	}
-	if (mlx->i == mlx->iter)
-		fill_pixel(mlx, x, y, 0xffffff);
-	else
-		fill_pixel(mlx, x, y, 0);
+	color(mlx, x, y);
 }
 
 static void		mandelbrot(t_mlx *mlx, int x, int y)
@@ -65,10 +46,7 @@ static void		mandelbrot(t_mlx *mlx, int x, int y)
 		mlx->new_i = 2 * mlx->old_r * mlx->old_i + mlx->z_i;
 		mlx->i++;
 	}
-	if (mlx->i == mlx->iter)
-		fill_pixel(mlx, x, y, 0xffffff);
-	else
-		fill_pixel(mlx, x, y, 0);
+	color(mlx, x, y);
 }
 
 void			create_fractal(t_mlx *mlx)
@@ -77,7 +55,6 @@ void			create_fractal(t_mlx *mlx)
 	int		y;
 
 	y = 0;
-	mlx->iter = 50;
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;
