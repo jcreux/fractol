@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:06:19 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/18 06:57:56 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/18 07:40:38 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,9 @@
 /*
 ** macros
 */
-# define WIN_WIDTH	1440
-# define WIN_HEIGHT	960
+# define W_WIDTH	1440
+# define W_HEIGHT	960
 # define CHAR_RANGE	256
-
-/*
-** macros de touches
-*/
-# define ESC		53
 
 /*
 ** declarations des structures
@@ -48,12 +43,12 @@ typedef struct	s_mlx
 	double	y_min;
 	double	y_max;
 
-	double	z_r;
-	double	z_i;
-	double	new_r;
-	double	new_i;
-	double	old_r;
-	double	old_i;
+	double	zr;
+	double	zi;
+	double	nr;
+	double	ni;
+	double	or;
+	double	oi;
 }				t_mlx;
 
 typedef struct	s_zoom

@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 19:07:46 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/18 07:03:02 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/18 07:15:27 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ static void	fill_pixel(t_mlx *mlx, int x, int y, unsigned int color)
 {
 	t_rgb	rgb;
 
-	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
+	if (x >= 0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
 	{
 		rgb.red = color / (CHAR_RANGE * CHAR_RANGE);
 		rgb.green = (color / CHAR_RANGE) % CHAR_RANGE;
 		rgb.blue = color % CHAR_RANGE;
-		mlx->img_data[x * 4 + y * 4 * WIN_WIDTH] = rgb.blue;
-		mlx->img_data[x * 4 + y * 4 * WIN_WIDTH + 1] = rgb.green;
-		mlx->img_data[x * 4 + y * 4 * WIN_WIDTH + 2] = rgb.red;
-		mlx->img_data[x * 4 + y * 4 * WIN_WIDTH + 3] = 0;
+		mlx->img_data[x * 4 + y * 4 * W_WIDTH] = rgb.blue;
+		mlx->img_data[x * 4 + y * 4 * W_WIDTH + 1] = rgb.green;
+		mlx->img_data[x * 4 + y * 4 * W_WIDTH + 2] = rgb.red;
+		mlx->img_data[x * 4 + y * 4 * W_WIDTH + 3] = 0;
 	}
 }
 

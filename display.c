@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 18:08:17 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/11 20:30:29 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/18 07:42:42 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 static void		julia(t_mlx *mlx, int x, int y)
 {
 	mlx->i = 0;
-	mlx->new_r = 0;
-	mlx->new_i = 0;
-	mlx->old_r = 0;
-	mlx->old_i = 0;
-	while ((mlx->new_r * mlx->new_r + mlx->new_i * mlx->new_i) < 4 && mlx->i < mlx->iter)
+	mlx->nr = 0;
+	mlx->ni = 0;
+	mlx->or = 0;
+	mlx->oi = 0;
+	while ((mlx->nr * mlx->nr + mlx->ni * mlx->ni) < 4 && mlx->i < mlx->iter)
 	{
-		mlx->old_r = mlx->new_r;
-		mlx->old_i = mlx->new_i;
-		mlx->new_r = mlx->old_r * mlx->old_r - mlx->old_i * mlx->old_i + 0.3;
-		mlx->new_i = 2 * mlx->old_r * mlx->old_i + 0.5;
+		mlx->or = mlx->nr;
+		mlx->oi = mlx->ni;
+		mlx->nr = mlx->or * mlx->or - mlx->oi * mlx->oi + 0.3;
+		mlx->ni = 2 * mlx->or * mlx->oi + 0.5;
 		mlx->i++;
 	}
 	color(mlx, x, y);
@@ -34,16 +34,16 @@ static void		julia(t_mlx *mlx, int x, int y)
 static void		mandelbrot(t_mlx *mlx, int x, int y)
 {
 	mlx->i = 0;
-	mlx->new_r = 0;
-	mlx->new_i = 0;
-	mlx->old_r = 0;
-	mlx->old_i = 0;
-	while ((mlx->new_r * mlx->new_r + mlx->new_i * mlx->new_i) < 4 && mlx->i < mlx->iter)
+	mlx->nr = 0;
+	mlx->ni = 0;
+	mlx->or = 0;
+	mlx->oi = 0;
+	while ((mlx->nr * mlx->nr + mlx->ni * mlx->ni) < 4 && mlx->i < mlx->iter)
 	{
-		mlx->old_r = mlx->new_r;
-		mlx->old_i = mlx->new_i;
-		mlx->new_r = mlx->old_r * mlx->old_r - mlx->old_i * mlx->old_i + mlx->z_r;
-		mlx->new_i = 2 * mlx->old_r * mlx->old_i + mlx->z_i;
+		mlx->or = mlx->nr;
+		mlx->oi = mlx->ni;
+		mlx->nr = mlx->or * mlx->or - mlx->oi * mlx->oi + mlx->zr;
+		mlx->ni = 2 * mlx->or * mlx->oi + mlx->zi;
 		mlx->i++;
 	}
 	color(mlx, x, y);
@@ -53,15 +53,19 @@ void			create_fractal(t_mlx *mlx)
 {
 	int		x;
 	int		y;
+	double	tmp1;
+	double	tmp2;
 
 	y = 0;
-	while (y < WIN_HEIGHT)
+	while (y < W_HEIGHT)
 	{
 		x = 0;
-		mlx->z_i = ((double)y / WIN_HEIGHT) * (mlx->y_max - mlx->y_min) + mlx->y_min;
-		while (x < WIN_WIDTH)
+		tmp1 = mlx->y_max - mlx->y_min;
+		mlx->zi = ((double)y / W_HEIGHT) * tmp1 + mlx->y_min;
+		while (x < W_WIDTH)
 		{
-			mlx->z_r = ((double)x / WIN_WIDTH) * (mlx->x_max - mlx->x_min) + mlx->x_min;
+			tmp2 = mlx->x_max - mlx->x_min;
+			mlx->zr = ((double)x / W_WIDTH) * tmp2 + mlx->x_min;
 			if (mlx->fractal == 0)
 				mandelbrot(mlx, x, y);
 			else if (mlx->fractal == 1)
