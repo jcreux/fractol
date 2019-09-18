@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:06:19 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/11 20:31:12 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/18 06:57:56 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,18 @@ typedef struct	s_mlx
 	double	old_r;
 	double	old_i;
 }				t_mlx;
+
+typedef struct	s_zoom
+{
+	double	r1;
+	double	r2;
+	double	new_r1;
+	double	new_r2;
+	double	xmin;
+	double	xmax;
+	double	ymin;
+	double	ymax;
+}				t_zoom;
 
 typedef struct	s_rgb
 {

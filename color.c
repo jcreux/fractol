@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 19:07:46 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/18 00:51:31 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/18 07:03:02 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	fill_pixel(t_mlx *mlx, int x, int y, unsigned int color)
 
 static void	first_set(t_mlx *mlx, int x, int y)
 {
-		if (mlx->i % 10 == 0)
+	if (mlx->i % 10 == 0)
 		fill_pixel(mlx, x, y, 0x000000);
 	else if (mlx->i % 10 == 1)
 		fill_pixel(mlx, x, y, 0x0a0d17);
@@ -54,7 +54,7 @@ static void	first_set(t_mlx *mlx, int x, int y)
 
 static void	second_set(t_mlx *mlx, int x, int y)
 {
-		if (mlx->i % 10 == 0)
+	if (mlx->i % 10 == 0)
 		fill_pixel(mlx, x, y, 0x000000);
 	else if (mlx->i % 10 == 1)
 		fill_pixel(mlx, x, y, 0x005959);
@@ -78,7 +78,7 @@ static void	second_set(t_mlx *mlx, int x, int y)
 
 static void	third_set(t_mlx *mlx, int x, int y)
 {
-		if (mlx->i % 10 == 0)
+	if (mlx->i % 10 == 0)
 		fill_pixel(mlx, x, y, 0x000000);
 	else if (mlx->i % 10 == 1)
 		fill_pixel(mlx, x, y, 0x050017);

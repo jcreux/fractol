@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:01:16 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/14 21:42:31 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/18 07:02:18 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@
 
 static void	zoom(t_mlx *mlx, int x, int y, double k)
 {
-	double	r1;
-	double	r2;
+	t_zoom	zoom;
 
-	(void)x;
-	(void)y;
-	r1 = (mlx->x_max - mlx->x_min) * k;
-	r2 = (mlx->y_max - mlx->y_min) * k;
-	mlx->x_max -= (mlx->x_max - mlx->x_min) - r1;
-	mlx->y_max -= (mlx->y_max - mlx->y_min) - r2;
+	zoom.xmin = (double)x / 1440;
+	zoom.xmax = 1 - ((double)x / 1440);
+	zoom.ymin = (double)y / 960;
+	zoom.ymax = 1 - ((double)y / 960);
+	zoom.r1 = (mlx->x_max - mlx->x_min) * k;
+	zoom.r2 = (mlx->y_max - mlx->y_min) * k;
+	zoom.new_r1 = (mlx->x_max - mlx->x_min) - zoom.r1;
+	zoom.new_r2 = (mlx->y_max - mlx->y_min) - zoom.r2;
+	mlx->x_max -= zoom.new_r1 * zoom.xmax;
+	mlx->x_min += zoom.new_r1 * zoom.xmin;
+	mlx->y_max -= zoom.new_r2 * zoom.ymax;
+	mlx->y_min += zoom.new_r2 * zoom.ymin;
 }
 
 static int	leave(t_mlx *mlx)
@@ -37,9 +42,9 @@ static int	leave(t_mlx *mlx)
 static int	mouse_press(int key, int x, int y, t_mlx *mlx)
 {
 	if (key == 4)
-		zoom(mlx, x, y, 1.05);
+		zoom(mlx, x, y, 1.2);
 	else if (key == 5)
-		zoom(mlx, x, y, 0.95);
+		zoom(mlx, x, y, 0.8);
 	create_fractal(mlx);
 	return (0);
 }
