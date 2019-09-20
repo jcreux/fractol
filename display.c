@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 18:08:17 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/18 07:42:42 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/20 11:11:20 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static void		julia(t_mlx *mlx, int x, int y)
 	{
 		mlx->or = mlx->nr;
 		mlx->oi = mlx->ni;
-		mlx->nr = mlx->or * mlx->or - mlx->oi * mlx->oi + 0.3;
-		mlx->ni = 2 * mlx->or * mlx->oi + 0.5;
+		mlx->nr = mlx->or * mlx->or - mlx->oi * mlx->oi + mlx->zr;
+		mlx->ni = 2 * mlx->or * mlx->oi + mlx->zi;
 		mlx->i++;
 	}
 	color(mlx, x, y);

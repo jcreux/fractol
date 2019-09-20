@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:01:16 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/18 07:40:15 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/20 10:00:46 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	zoom(t_mlx *mlx, int x, int y, double k)
 {
 	t_zoom	zoom;
 
-	zoom.xmin = (double)x / 1440;
-	zoom.xmax = 1 - ((double)x / 1440);
-	zoom.ymin = (double)y / 960;
-	zoom.ymax = 1 - ((double)y / 960);
+	zoom.xmin = (double)x / W_WIDTH;
+	zoom.xmax = 1 - ((double)x / W_WIDTH);
+	zoom.ymin = (double)y / W_HEIGHT;
+	zoom.ymax = 1 - ((double)y / W_HEIGHT);
 	zoom.r1 = (mlx->x_max - mlx->x_min) * k;
 	zoom.r2 = (mlx->y_max - mlx->y_min) * k;
 	zoom.new_r1 = (mlx->x_max - mlx->x_min) - zoom.r1;
