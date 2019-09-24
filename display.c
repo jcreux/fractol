@@ -6,12 +6,30 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 18:08:17 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/20 11:11:20 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/24 15:18:57 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "fractol.h"
+
+static void		third(t_mlx *mlx, int x, int y)
+{
+	mlx->i = 0;
+	mlx->nr = 0;
+	mlx->ni = 0;
+	mlx->or = 0;
+	mlx->oi = 0;
+	while ((mlx->nr * mlx->nr + mlx->ni * mlx->ni) < 4 && mlx->i < mlx->iter)
+	{
+		mlx->or = mlx->nr;
+		mlx->oi = mlx->ni;
+		mlx->nr = mlx->or * mlx->or - mlx->oi * mlx->oi + mlx->zr;
+		mlx->ni = 2 * mlx->or * mlx->oi + mlx->zi;
+		mlx->i++;
+	}
+	color(mlx, x, y);
+}
 
 static void		julia(t_mlx *mlx, int x, int y)
 {
@@ -70,6 +88,8 @@ void			create_fractal(t_mlx *mlx)
 				mandelbrot(mlx, x, y);
 			else if (mlx->fractal == 1)
 				julia(mlx, x, y);
+			else if (mlx->fractal == 2)
+				third(mlx, x, y);
 			x++;
 		}
 		y++;
