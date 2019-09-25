@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:01:16 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/20 10:00:46 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/25 11:11:13 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,13 @@ static int	key_press(int key, t_mlx *mlx)
 		mlx->color_set = 2;
 	else if (key == 20)
 		mlx->color_set = 3;
+	else if (key == 48)
+	{
+		if (mlx->fractal == 2)
+			mlx->fractal = 0;
+		else
+			mlx->fractal++;
+	}
 	create_fractal(mlx);
 	return (0);
 }

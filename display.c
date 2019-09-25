@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 18:08:17 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/24 15:18:57 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/25 12:23:01 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,16 @@ static void		third(t_mlx *mlx, int x, int y)
 
 static void		julia(t_mlx *mlx, int x, int y)
 {
+	double	tmp;
+
 	mlx->i = 0;
-	mlx->nr = 0;
-	mlx->ni = 0;
-	mlx->or = 0;
-	mlx->oi = 0;
+	mlx->nr = mlx->zr;
+	mlx->ni = mlx->zi;
 	while ((mlx->nr * mlx->nr + mlx->ni * mlx->ni) < 4 && mlx->i < mlx->iter)
 	{
-		mlx->or = mlx->nr;
-		mlx->oi = mlx->ni;
-		mlx->nr = mlx->or * mlx->or - mlx->oi * mlx->oi + mlx->zr;
-		mlx->ni = 2 * mlx->or * mlx->oi + mlx->zi;
+		tmp = mlx->nr * mlx->nr - mlx->ni * mlx->ni + mlx->zr;
+		mlx->ni = 2 * mlx->nr * mlx->ni + mlx->zi;
+		mlx->nr = tmp;
 		mlx->i++;
 	}
 	color(mlx, x, y);
@@ -71,19 +70,18 @@ void			create_fractal(t_mlx *mlx)
 {
 	int		x;
 	int		y;
-	double	tmp1;
-	double	tmp2;
+	double	tmp;
 
 	y = 0;
 	while (y < W_HEIGHT)
 	{
 		x = 0;
-		tmp1 = mlx->y_max - mlx->y_min;
-		mlx->zi = ((double)y / W_HEIGHT) * tmp1 + mlx->y_min;
+		tmp = mlx->y_max - mlx->y_min;
+		mlx->zi = ((double)y / W_HEIGHT) * tmp + mlx->y_min;
 		while (x < W_WIDTH)
 		{
-			tmp2 = mlx->x_max - mlx->x_min;
-			mlx->zr = ((double)x / W_WIDTH) * tmp2 + mlx->x_min;
+			tmp = mlx->x_max - mlx->x_min;
+			mlx->zr = ((double)x / W_WIDTH) * tmp + mlx->x_min;
 			if (mlx->fractal == 0)
 				mandelbrot(mlx, x, y);
 			else if (mlx->fractal == 1)
