@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 18:08:17 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/25 12:23:01 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/25 14:32:00 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void		julia(t_mlx *mlx, int x, int y)
 	mlx->ni = mlx->zi;
 	while ((mlx->nr * mlx->nr + mlx->ni * mlx->ni) < 4 && mlx->i < mlx->iter)
 	{
-		tmp = mlx->nr * mlx->nr - mlx->ni * mlx->ni + mlx->zr;
-		mlx->ni = 2 * mlx->nr * mlx->ni + mlx->zi;
+		tmp = mlx->nr * mlx->nr - mlx->ni * mlx->ni + mlx->re;
+		mlx->ni = 2 * mlx->nr * mlx->ni + mlx->im;
 		mlx->nr = tmp;
 		mlx->i++;
 	}

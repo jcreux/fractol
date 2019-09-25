@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:06:19 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/20 10:20:46 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/25 14:38:00 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct	s_mlx
 	int		fractal;
 	int		iter;
 	int		color_set;
+	int		token;
+
+	double	re;
+	double	im;
 
 	double	x_min;
 	double	x_max;
