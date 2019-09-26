@@ -6,12 +6,19 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 18:08:17 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/25 14:32:00 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/26 13:07:57 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "fractol.h"
+
+static double	ft_abs2(double n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}
 
 static void		third(t_mlx *mlx, int x, int y)
 {
@@ -22,8 +29,8 @@ static void		third(t_mlx *mlx, int x, int y)
 	mlx->oi = 0;
 	while ((mlx->nr * mlx->nr + mlx->ni * mlx->ni) < 4 && mlx->i < mlx->iter)
 	{
-		mlx->or = mlx->nr;
-		mlx->oi = mlx->ni;
+		mlx->or = ft_abs2(mlx->nr);
+		mlx->oi = ft_abs2(mlx->ni);
 		mlx->nr = mlx->or * mlx->or - mlx->oi * mlx->oi + mlx->zr;
 		mlx->ni = 2 * mlx->or * mlx->oi + mlx->zi;
 		mlx->i++;
