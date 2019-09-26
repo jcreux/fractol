@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 19:07:46 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/18 07:15:27 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/26 14:04:11 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,23 @@ static void	second_set(t_mlx *mlx, int x, int y)
 	if (mlx->i % 10 == 0)
 		fill_pixel(mlx, x, y, 0x000000);
 	else if (mlx->i % 10 == 1)
-		fill_pixel(mlx, x, y, 0x005959);
+		fill_pixel(mlx, x, y, 0xe59400);
 	else if (mlx->i % 10 == 2)
-		fill_pixel(mlx, x, y, 0x006666);
+		fill_pixel(mlx, x, y, 0xffa500);
 	else if (mlx->i % 10 == 3)
-		fill_pixel(mlx, x, y, 0x007373);
+		fill_pixel(mlx, x, y, 0xffae19);
 	else if (mlx->i % 10 == 4)
-		fill_pixel(mlx, x, y, 0x008080);
+		fill_pixel(mlx, x, y, 0x45bbca);
 	else if (mlx->i % 10 == 5)
-		fill_pixel(mlx, x, y, 0x405054);
+		fill_pixel(mlx, x, y, 0x3da6b4);
 	else if (mlx->i % 10 == 6)
-		fill_pixel(mlx, x, y, 0x516469);
+		fill_pixel(mlx, x, y, 0x35919d);
 	else if (mlx->i % 10 == 7)
-		fill_pixel(mlx, x, y, 0x627378);
+		fill_pixel(mlx, x, y, 0x2e7c87);
 	else if (mlx->i % 10 == 8)
-		fill_pixel(mlx, x, y, 0x859296);
+		fill_pixel(mlx, x, y, 0x266870);
 	else if (mlx->i % 10 == 9)
-		fill_pixel(mlx, x, y, 0xcad0d2);
+		fill_pixel(mlx, x, y, 0x1e535a);
 }
 
 static void	third_set(t_mlx *mlx, int x, int y)
