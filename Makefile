@@ -6,7 +6,7 @@
 #    By: jcreux <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 22:02:03 by jcreux            #+#    #+#              #
-#    Updated: 2019/09/14 21:44:05 by jcreux           ###   ########.fr        #
+#    Updated: 2019/09/26 14:21:16 by jcreux           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ HEAD = fractol.h
 SRCS = main.c \
 	   display.c \
 	   error.c \
-	   color.c
+	   color.c \
+	   zoom.c
 
 OBJ = $(patsubst %.c,%.o,$(addprefix $(PATH_SRC), $(SRCS)))
 

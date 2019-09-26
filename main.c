@@ -6,31 +6,13 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:01:16 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/25 14:58:27 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/26 14:41:11 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <stdlib.h>
 #include "fractol.h"
-
-static void	zoom(t_mlx *mlx, int x, int y, double k)
-{
-	t_zoom	zoom;
-
-	zoom.xmin = (double)x / W_WIDTH;
-	zoom.xmax = 1 - ((double)x / W_WIDTH);
-	zoom.ymin = (double)y / W_HEIGHT;
-	zoom.ymax = 1 - ((double)y / W_HEIGHT);
-	zoom.r1 = (mlx->x_max - mlx->x_min) * k;
-	zoom.r2 = (mlx->y_max - mlx->y_min) * k;
-	zoom.new_r1 = (mlx->x_max - mlx->x_min) - zoom.r1;
-	zoom.new_r2 = (mlx->y_max - mlx->y_min) - zoom.r2;
-	mlx->x_max -= zoom.new_r1 * zoom.xmax;
-	mlx->x_min += zoom.new_r1 * zoom.xmin;
-	mlx->y_max -= zoom.new_r2 * zoom.ymax;
-	mlx->y_min += zoom.new_r2 * zoom.ymin;
-}
 
 static int	leave(t_mlx *mlx)
 {
@@ -60,9 +42,9 @@ static int	mouse_move(int x, int y, t_mlx *mlx)
 static int	mouse_press(int key, int x, int y, t_mlx *mlx)
 {
 	if (key == 4)
-		zoom(mlx, x, y, 1.1);
+		zoom(mlx, x, y, 1.2);
 	else if (key == 5)
-		zoom(mlx, x, y, 0.9);
+		zoom(mlx, x, y, 0.8);
 	create_fractal(mlx);
 	return (0);
 }
@@ -85,20 +67,7 @@ static int	key_press(int key, t_mlx *mlx)
 		mlx->color_set = 2;
 	else if (key == 20)
 		mlx->color_set = 3;
-	else if (key == 48)
-	{
-		if (mlx->fractal == 2)
-			mlx->fractal = 0;
-		else
-			mlx->fractal++;
-	}
-	else if (key == 49)
-	{
-		if (mlx->token == 0)
-			mlx->token = 1;
-		else
-			mlx->token = 0;
-	}
+	key_press2(key, mlx);
 	create_fractal(mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:06:19 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/25 14:38:00 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/09/26 14:41:45 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 /*
 ** macros
 */
-# define W_WIDTH	1440
-# define W_HEIGHT	960
+# define W_WIDTH	720
+# define W_HEIGHT	480
 # define CHAR_RANGE	256
 
 /*
@@ -81,5 +81,7 @@ int				check_param(char *param);
 int				usage(char *path);
 void			create_fractal(t_mlx *mlx);
 void			color(t_mlx *mlx, int x, int y);
+void			zoom(t_mlx *mlx, int x, int y, double k);
+void			key_press2(int key, t_mlx *mlx);
 
 #endif
