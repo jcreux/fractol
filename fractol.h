@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:06:19 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/26 14:41:45 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/10/04 10:19:57 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 # define W_WIDTH	720
 # define W_HEIGHT	480
 # define CHAR_RANGE	256
+
+# define S_UP		4
+# define S_DOWN		5
+# define ONE		18
+# define TWO		19
+# define THREE		20
+# define TAB		48
+# define SPACE		49
+# define ESC		53
+# define DOWN		125
+# define UP			126
 
 /*
 ** declarations des structures

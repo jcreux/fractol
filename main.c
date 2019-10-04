@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:01:16 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/26 14:41:11 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/10/04 10:18:03 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	mouse_move(int x, int y, t_mlx *mlx)
 
 	n = 0;
 	m = 0;
-	if (x >= 0 && x <= 1440 && y >= 0 && y <= 960 && mlx->token == 0)
+	if (x >= 0 && x <= W_WIDTH && y >= 0 && y <= W_HEIGHT && mlx->token == 0)
 	{
 		n = ((double)x / W_WIDTH) * 3 - 2;
 		m = ((double)y / W_HEIGHT) * 2 - 1;
@@ -41,9 +41,9 @@ static int	mouse_move(int x, int y, t_mlx *mlx)
 
 static int	mouse_press(int key, int x, int y, t_mlx *mlx)
 {
-	if (key == 4)
+	if (key == S_UP)
 		zoom(mlx, x, y, 1.2);
-	else if (key == 5)
+	else if (key == S_DOWN)
 		zoom(mlx, x, y, 0.8);
 	create_fractal(mlx);
 	return (0);
@@ -51,21 +51,21 @@ static int	mouse_press(int key, int x, int y, t_mlx *mlx)
 
 static int	key_press(int key, t_mlx *mlx)
 {
-	if (key == 53)
+	if (key == ESC)
 	{
 		mlx_destroy_image(mlx->mlx_ptr, mlx->img_ptr);
 		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 		exit(1);
 	}
-	else if (key == 126)
+	else if (key == UP)
 		mlx->iter++;
-	else if (key == 125 && mlx->iter > 0)
+	else if (key == DOWN && mlx->iter > 0)
 		mlx->iter--;
-	else if (key == 18)
+	else if (key == ONE)
 		mlx->color_set = 1;
-	else if (key == 19)
+	else if (key == TWO)
 		mlx->color_set = 2;
-	else if (key == 20)
+	else if (key == THREE)
 		mlx->color_set = 3;
 	key_press2(key, mlx);
 	create_fractal(mlx);

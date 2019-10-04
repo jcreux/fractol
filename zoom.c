@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 14:16:47 by jcreux            #+#    #+#             */
-/*   Updated: 2019/09/26 14:42:35 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/10/04 10:18:29 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	key_press2(int key, t_mlx *mlx)
 {
-	if (key == 48)
+	if (key == TAB)
 	{
 		if (mlx->fractal == 2)
 			mlx->fractal = 0;
 		else
 			mlx->fractal++;
 	}
-	else if (key == 49)
+	else if (key == SPACE)
 	{
 		if (mlx->token == 0)
 			mlx->token = 1;
