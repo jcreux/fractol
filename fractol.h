@@ -6,7 +6,7 @@
 /*   By: jcreux <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 13:06:19 by jcreux            #+#    #+#             */
-/*   Updated: 2019/10/04 10:19:57 by jcreux           ###   ########.fr       */
+/*   Updated: 2019/10/04 10:24:32 by jcreux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # define W_HEIGHT	480
 # define CHAR_RANGE	256
 
+/*
+** macros de touche
+*/
 # define S_UP		4
 # define S_DOWN		5
 # define ONE		18
